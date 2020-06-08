@@ -1,19 +1,19 @@
 'use strict';
 
-const DINGTALKROBOT = Symbol('Application#dingtalkRobot');
-const createDingtalkRobot = require('../../lib/robot');
+const DINGTALKBOT = Symbol('Application#dingtalkBot');
+const createDingtalkBot = require('../../lib/robot');
 
 module.exports = {
   /**
    * dingtalk
    * @member Application#dingtalk
    */
-  get dingtalkRobot() {
-    if (!this[DINGTALKROBOT]) {
-      const options = Object.assign({}, this.config.dingtalkRobot);
+  get dingtalkBot() {
+    if (!this[DINGTALKBOT]) {
+      const options = Object.assign({}, this.config.dingtalkBot);
       options.urllib = this.httpclient;
-      this[DINGTALKROBOT] = createDingtalkRobot(options);
+      this[DINGTALKBOT] = createDingtalkBot(options);
     }
-    return this[DINGTALKROBOT];
+    return this[DINGTALKBOT];
   },
 };
