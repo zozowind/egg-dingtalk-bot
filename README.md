@@ -1,5 +1,16 @@
 # egg-dingtalk-robot
 
+[![NPM version][npm-image]][npm-url]
+[![David deps][david-image]][david-url]
+[![NPM download][download-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/egg-dingtalk-bot.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/egg-dingtalk-bot
+[david-image]: https://img.shields.io/david/zozowind/egg-dingtalk-bot.svg?style=flat-square
+[david-url]: https://david-dm.org/zozowind/egg-dingtalk-bot
+[download-image]: https://img.shields.io/npm/dm/egg-dingtalk-bot.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-dingtalk-bot
+
 ## Standing on the shoulders of giants
 This plugin forked from [okoala/egg-dingtalk-robot](https://github.com/okoala/egg-dingtalk-robot)
 Add Features: 
