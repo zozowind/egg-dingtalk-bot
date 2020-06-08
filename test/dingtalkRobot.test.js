@@ -56,6 +56,28 @@ describe('test/dingtalkRobot.test.js', () => {
         .end(done);
     });
 
+    it('should sendSingleActionCard success', function(done) {
+      request(app.callback())
+        .get('/sendSingleActionCard')
+        .expect(200)
+        .end(done);
+    });
+
+    it('should sendBtnsActionCard success', function(done) {
+      request(app.callback())
+        .get('/sendBtnsActionCard')
+        .expect(200)
+        .end(done);
+    });
+
+    it('should sendFeedCard success', function(done) {
+      request(app.callback())
+        .get('/sendFeedCard')
+        .expect(200)
+        .end(done);
+    });
+
+
     it('should error is at mobiles more than maxAtCount', function(done) {
       request(app.callback())
         .get('/overMaxAtCount')

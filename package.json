@@ -5,7 +5,12 @@
   "eggPlugin": {
     "name": "dingtalkRobot"
   },
-  "keywords": ["egg", "plugin", "dingtalk", "robot"],
+  "keywords": [
+    "egg",
+    "plugin",
+    "dingtalk",
+    "robot"
+  ],
   "dependencies": {
     "agentkeepalive": "^3.1.0",
     "debug": "^2.6.1",

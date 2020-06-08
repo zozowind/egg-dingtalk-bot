@@ -16,4 +16,5 @@ exports.dingtalkRobot = {
   },
   // 机器人的accessToken
   accessToken: '',
+  secret: '',
 };
