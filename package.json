@@ -1,9 +1,9 @@
 {
-  "name": "egg-dingtalk-robot",
-  "version": "2.0.1",
+  "name": "egg-dingtalk-bot",
+  "version": "2.0.2",
   "description": "dingtalk robot plugin for egg",
   "eggPlugin": {
-    "name": "dingtalkRobot"
+    "name": "dingtalkBot"
   },
   "keywords": [
     "egg",
@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/okoala/egg-dingtalk-robot.git"
+    "url": "git+https://github.com/zozowind/egg-dingtalk-bot.git"
   },
   "bugs": {
-    "url": "https://github.com/okoala/egg-dingtalk-robot/issues"
+    "url": "https://github.com/zozowind/egg-dingtalk-bot/issues"
   },
-  "homepage": "https://github.com/okoala/egg-dingtalk-robot#readme",
-  "author": "okoala <dapixp@gmail.com>",
+  "homepage": "https://github.com/zozowind/egg-dingtalk-bot#readme",
+  "author": "marcochen <zozowind@gmail.com>",
   "license": "MIT"
 }
