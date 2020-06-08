@@ -20,43 +20,92 @@
 [download-image]: https://img.shields.io/npm/dm/egg-dingtalk-bot.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-dingtalk-bot
 
-<!--
-Description here.
--->
+[中文文档](./README.zh_CN.md)
+
+## Standing on the shoulders of giants
+This plugin forked from [okoala/egg-dingtalk-robot](https://github.com/okoala/egg-dingtalk-robot)
+Add Features: 
+1. Add secret support
+2. Add sendActionCard sendFeedCard support
+3. v3.0.0 support egg ^2.16.0
 
 ## Install
-
 ```bash
-$ npm i egg-dingtalk-bot --save
+npm install egg-dingtalk-bot --save
 ```
 
-## Usage
-
-```js
+## Getting Started
+```javascript
 // {app_root}/config/plugin.js
 exports.dingtalkBot = {
   enable: true,
   package: 'egg-dingtalk-bot',
 };
-```
 
-## Configuration
-
-```js
 // {app_root}/config/config.default.js
 exports.dingtalkBot = {
+  name: '',
+  // 机器人的accessToken
+  accessToken: '',
+  // 使用签名验证时需要用到的secret
+  secret: '',
 };
-```
 
+// {app_root}/app/router.js
+app.get('/sendText', function* () {
+  this.body = yield this.app.dingtalkBot.sendText('this is a test message!');
+});
+```
 see [config/config.default.js](config/config.default.js) for more detail.
 
-## Example
+## API
+```javascript
+app.dingtalkBot.sendText(text, opts) - send text
+app.dingtalkBot.sendTextAt(text, atMobiles, opts) - send text at mobiles
+app.dingtalkBot.sendTextAtAll(text, opts) - send text at all
+app.dingtalkBot.sendLink(link, opts) - send link
+app.dingtalkBot.sendMarkdown(markdown, opts) - send markdown
+app.dingtalkBot.sendSingleActionCard(markdown, opts) - send markdown
+app.dingtalkBot.sendBtnsActionCard(markdown, opts) - send markdown
+app.dingtalkBot.sendFeedCard(markdown, opts) - send markdown
+app.dingtalkBot.send(opts) - send raw
+```
 
-<!-- example here -->
+## More Information
+[customer robot(dingtalk docs)](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq)
+
+## Multi Robots
+```javascript
+// {app_root}/config/config.default.js
+exports.dingtalkBot = {
+  robots: {
+    bot1: {
+      name: 'bot1',
+      accessToken: ''
+    },
+    bot2: {
+      name: 'bot2',
+      accessToken: ''
+    }
+  }
+};
+
+app.get('/multi/sendText', async function () {
+  this.body = await this.app.dingtalkBot.get('bot1').sendText('this is a test');
+});
+app.get('/multi/sendLink', async function () {
+  this.body = await this.app.dingtalkBot.get('bot2').sendLink({
+    "text": "this is a link text",
+    "title": "this is a link title",
+    "picUrl": "",
+    "messageUrl": "https://www.dingtalk.com"
+  });
+});
+```
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please let us know what we can help, check [issues](https://github.com/zozowind/egg-dingtalk-bot/issues) for bug reporting and suggestion.
 
 ## License
 

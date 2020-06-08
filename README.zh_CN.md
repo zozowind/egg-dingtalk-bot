@@ -20,56 +20,95 @@
 [download-image]: https://img.shields.io/npm/dm/egg-dingtalk-bot.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-dingtalk-bot
 
-<!--
-Description here.
--->
+[English Document](./README.md)
 
-## 依赖说明
+## 站在巨人的肩膀
+本插件 forked from [okoala/egg-dingtalk-robot](https://github.com/okoala/egg-dingtalk-robot)
+添加功能 
+1. 增加secret支持
+2. 增加发送动作卡片和信息流卡片支持
+3. 版本3.0.0 支持egg ^2.16.0
 
-### 依赖的 egg 版本
+## 安装
+```bash
+npm install egg-dingtalk-bot --save
+```
 
-egg-dingtalk-bot 版本 | egg 1.x
---- | ---
-1.x | 😁
-0.x | ❌
-
-### 依赖的插件
-<!--
-
-如果有依赖其它插件，请在这里特别说明。如
-
-- security
-- multipart
-
--->
-
-## 开启插件
-
-```js
-// config/plugin.js
+## 快速开始
+```javascript
+// 激活插件
+// {app_root}/config/plugin.js
 exports.dingtalkBot = {
   enable: true,
   package: 'egg-dingtalk-bot',
 };
+
+// 配置插件参数
+// {app_root}/config/config.default.js
+exports.dingtalkBot = {
+  name: '',
+  // 机器人的accessToken
+  accessToken: '',
+  // 使用签名验证时需要用到的secret
+  secret: '',
+};
+
+// 测试应用
+// {app_root}/app/router.js
+app.get('/sendText', function* () {
+  this.body = yield this.app.dingtalkBot.sendText('测试测试！');
+});
+```
+配置项详见 [config/config.default.js](config/config.default.js) 
+
+## API
+```javascript
+app.dingtalkBot.sendText(text, opts) - send text
+app.dingtalkBot.sendTextAt(text, atMobiles, opts) - send text at mobiles
+app.dingtalkBot.sendTextAtAll(text, opts) - send text at all
+app.dingtalkBot.sendLink(link, opts) - send link
+app.dingtalkBot.sendMarkdown(markdown, opts) - send markdown
+app.dingtalkBot.sendSingleActionCard(markdown, opts) - send markdown
+app.dingtalkBot.sendBtnsActionCard(markdown, opts) - send markdown
+app.dingtalkBot.sendFeedCard(markdown, opts) - send markdown
+app.dingtalkBot.send(opts) - send raw
 ```
 
-## 使用场景
+## 更多信息
+[自定义机器人（钉钉文档）](https://ding-doc.dingtalk.com/doc#/serverapi2/qf2nxq)
 
-- Why and What: 描述为什么会有这个插件，它主要在完成一件什么事情。
-尽可能描述详细。
-- How: 描述这个插件是怎样使用的，具体的示例代码，甚至提供一个完整的示例，并给出链接。
+## 多个机器人配置及使用
+```javascript
+// {app_root}/config/config.default.js
+exports.dingtalkBot = {
+  robots: {
+    bot1: {
+      name: 'bot1',
+      accessToken: ''
+    },
+    bot2: {
+      name: 'bot2',
+      accessToken: ''
+    }
+  }
+};
 
-## 详细配置
+app.get('/multi/sendText', async function () {
+  this.body = await this.app.dingtalkBot.get('bot1').sendText('测试测试！');
+});
+app.get('/multi/sendLink', async function () {
+  this.body = await this.app.dingtalkBot.get('bot2').sendLink({
+    "text": "测试连接文字",
+    "title": "测试连接title",
+    "picUrl": "",
+    "messageUrl": "https://www.marcotalk.com"
+  });
+});
+```
 
-请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
+## 问题和建议
 
-## 单元测试
-
-<!-- 描述如何在单元测试中使用此插件，例如 schedule 如何触发。无则省略。-->
-
-## 提问交流
-
-请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
+ 提交[问题和建议](https://github.com/zozowind/egg-dingtalk-bot/issues) ，不胜感激
 
 ## License
 
