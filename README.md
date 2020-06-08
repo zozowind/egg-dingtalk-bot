@@ -65,9 +65,9 @@ app.dingtalkBot.sendTextAt(text, atMobiles, opts) - send text at mobiles
 app.dingtalkBot.sendTextAtAll(text, opts) - send text at all
 app.dingtalkBot.sendLink(link, opts) - send link
 app.dingtalkBot.sendMarkdown(markdown, opts) - send markdown
-app.dingtalkBot.sendSingleActionCard(markdown, opts) - send markdown
-app.dingtalkBot.sendBtnsActionCard(markdown, opts) - send markdown
-app.dingtalkBot.sendFeedCard(markdown, opts) - send markdown
+app.dingtalkBot.sendSingleActionCard(markdown, opts) - send Single ActionCard
+app.dingtalkBot.sendBtnsActionCard(markdown, opts) - send ActionCard with btns
+app.dingtalkBot.sendFeedCard(markdown, opts) - send FeedCard
 app.dingtalkBot.send(opts) - send raw
 ```
 
